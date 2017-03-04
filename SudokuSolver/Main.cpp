@@ -16,15 +16,15 @@ int main() {
 	set<int> areasKeys;
 	map<int, vector<Node*>> areas;
 
-	for (int i = 0; i < grid_s.size; i++)
+	for (int i = 0; i < grid_s.size(); i++)
 	{
-		for (int j = 0; j < grid_s.at(i).size; j++)
+		for (int j = 0; j < grid_s.at(i).size(); j++)
 		{
 			Node* node = new Node(grid_s.at(i).at(j));
 			areasKeys.emplace(i + j * 10);
 			//Squares
 			int k(0);
-			if (areas.find(i + j * 10 + k * 100) == areas.end) {
+			if (areas.find(i + j * 10 + k * 100) == areas.end()) {
 				vector<Node*> tmp;
 				tmp.push_back(node);
 				areas.emplace(i + j * 10 + k * 100, tmp);
@@ -35,7 +35,7 @@ int main() {
 			}
 			//Horizontals
 			k++;
-			if (areas.find(i + k * 100) == areas.end) {
+			if (areas.find(i + k * 100) == areas.end()) {
 				vector<Node*> tmp;
 				tmp.push_back(node);
 				areas.emplace(i + k * 100, tmp);
@@ -46,7 +46,7 @@ int main() {
 			}
 			//Verticals
 			k++;
-			if (areas.find(j * 10 + k * 100) == areas.end) {
+			if (areas.find(j * 10 + k * 100) == areas.end()) {
 				vector<Node*> tmp;
 				tmp.push_back(node);
 				areas.emplace(j * 10 + k * 100, tmp);
