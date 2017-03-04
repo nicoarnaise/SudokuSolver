@@ -8,9 +8,12 @@ public:
 	~Node();
 
 	void AddNeighbors(std::vector<Node*> toAdd);
+	int getNbValues() { return values.size(); }
+	std::set<std::string> getValues() { return values; }
+	set<Node*> getNeigbhors() { return neighbors; }
 
 private:
-	std::set<Node*> neigbors;
+	std::set<Node*> neighbors;
 	std::set<std::string> values;
 };
 

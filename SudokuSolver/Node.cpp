@@ -25,7 +25,7 @@ void Node::AddNeighbors(vector<Node*> toAdd) {
 	for each (Node* var in toAdd)
 	{
 		if (var != this) {
-			neigbors.emplace(var);
+			neighbors.emplace(var);
 		}
 	}
 }
