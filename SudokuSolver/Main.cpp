@@ -10,8 +10,7 @@
 using namespace std;
 
 int main() {
-	split("0;1;2;3", ';');
-	vector < vector<string>> grid_s;
+	vector < vector<string>> grid_s = readFile();
 	queue<Node*> nodes;
 	set<int> areasKeys;
 	map<int, vector<Node*>> areas;
@@ -42,7 +41,7 @@ int main() {
 			}
 			else
 			{
-				areas.at(j * 10 + k * 100).push_back(node);
+				areas.at(i + k * 100).push_back(node);
 			}
 			//Verticals
 			k++;
@@ -65,7 +64,7 @@ int main() {
 			node->AddNeighbors(areas.at(key));
 		}
 	}
-
+	writeFile(nodes);
 	cout << "Hello" << endl;
 	system("pause");
 
