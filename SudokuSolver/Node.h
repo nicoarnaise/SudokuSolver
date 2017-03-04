@@ -8,7 +8,7 @@ public:
 	~Node();
 
 	void AddNeighbors(std::vector<Node*> toAdd);
-
+	std::string toString();
 private:
 	std::set<Node*> neigbors;
 	std::set<std::string> values;

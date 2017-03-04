@@ -29,3 +29,9 @@ void Node::AddNeighbors(vector<Node*> toAdd) {
 		}
 	}
 }
+
+std::string Node::toString()
+{
+	string output = values.size() == 1 ? (*values.begin()) : "X";
+	return output;
+}
