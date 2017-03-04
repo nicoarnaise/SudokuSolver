@@ -9,7 +9,7 @@ Node* getDh(vector<Node*> nodes)
 	for each (Node* node in nodes)
 	{
 		int constrainedValue(0);
-		set<Node*> neighbors = node->getNeigbhors();
+		set<Node*> neighbors = node->getNeighbors();
 		for each (Node* neighbor in neighbors)
 		{
 			constrainedValue += 9 - neighbor->getNbValues();

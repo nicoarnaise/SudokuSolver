@@ -12,6 +12,7 @@ vector<Node*> getMrv(queue<Node*> nodes) {
 			if (nbVal < min)
 				MrvNodes.clear();
 			MrvNodes.emplace(nodes.front);
+			min = nbVal;
 		}
 		nodes.pop();
 	}

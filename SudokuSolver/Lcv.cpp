@@ -9,7 +9,7 @@ string getLcv(Node * node)
 	for each (string var in node->getValues())
 	{
 		int LcvValue(0);
-		for each (Node* neighbor in node->getNeigbhors)
+		for each (Node* neighbor in node->getNeighbors())
 		{
 			if (neighbor->getValues().find(var) != neighbor->getValues().end)
 				LcvValue++;
