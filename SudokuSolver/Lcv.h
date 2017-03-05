@@ -1,6 +1,6 @@
 #pragma once
-#include <string>
+#include <queue>
 #include <set>
 #include "Node.h"
 
-std::string getLcv(Node* node);
+std::queue<std::string> getLcv(Node* node);

@@ -4,7 +4,7 @@ using namespace std;
 
 Node* getDh(vector<Node*> nodes)
 {
-	Node* DhNode;
+	Node* DhNode = nullptr;
 	int max(-1);
 	for each (Node* node in nodes)
 	{
@@ -18,6 +18,10 @@ Node* getDh(vector<Node*> nodes)
 			max = constrainedValue;
 			DhNode = node;
 		}
+	}
+	if (DhNode == nullptr)
+	{
+		bool tre = true;
 	}
 	return DhNode;
 }

@@ -52,3 +52,28 @@ bool writeFile(queue<Node*> input) {
 	else return false;
 	return true;
 }
+
+queue<Node*> copyCsp(queue<Node*> csp)
+{
+	queue<Node*> copied;
+	vector<Node*> toFix;
+	map<Node*, Node*> carte;
+	while (!csp.empty())
+	{
+		Node* tmp = new Node(csp.front());
+		carte.emplace(csp.front(), tmp);
+		copied.push(tmp);
+		toFix.push_back(tmp);
+		csp.pop();
+	}
+	for each (Node* node in toFix)
+	{
+		set<Node*> neighbors;
+		for each (Node* neighbor in node->getNeighbors())
+		{
+			neighbors.insert(carte.at(neighbor));
+		}
+		node->setNeighbors(neighbors);
+	}
+	return copied;
+}
