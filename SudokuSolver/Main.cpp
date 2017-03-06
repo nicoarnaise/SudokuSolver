@@ -15,48 +15,39 @@ int main() {
 	queue<Node*> nodes;
 	set<int> areasKeys;
 	map<int, vector<Node*>> areas;
-
+	int index;
 	for (int i = 0; i < grid_s.size(); i++)
 	{
 		for (int j = 0; j < grid_s.at(i).size(); j++)
 		{
 			Node* node = new Node(grid_s.at(i).at(j));
-			//Squares
-			int k(0);
-			if (areas.find(i/3 + (j/3) * 10 + k * 100) == areas.end()) {
-				vector<Node*> tmp;
-				tmp.push_back(node);
-				areasKeys.insert(i / 3 + (j / 3) * 10 + k * 100);
-				areas.emplace(i / 3 + (j / 3) * 10 + k * 100, tmp);
-			}
-			else
+			for (int k = 0; k < 3; k++)
 			{
-				areas.at(i / 3 + (j / 3) * 10 + k * 100).push_back(node);
-			}
-			//Horizontals
-			k++;
-			if (areas.find(i + k * 100) == areas.end()) {
-				vector<Node*> tmp;
-				tmp.push_back(node);
-				areasKeys.insert(i + k * 100);
-				areas.emplace(i + k * 100, tmp);
-			}
-			else
-			{
-				areas.at(i + k * 100).push_back(node);
-			}
-			//Verticals
-			k++;
-			if (areas.find(j * 10 + k * 100) == areas.end()) {
-				vector<Node*> tmp;
-				tmp.push_back(node);
-				areasKeys.insert(j * 10 + k * 100);
-
-				areas.emplace(j * 10 + k * 100, tmp);
-			}
-			else
-			{
-				areas.at(j * 10 + k * 100).push_back(node);
+				switch (k)
+				{
+				case 0:
+					//Squares
+					index = i / 3 + (j / 3) * 10 + k * 100;
+					break;
+				case 1:
+					//Horizontals
+					index = i + k * 100;
+					break;
+				case 2:
+					//Verticals
+					index = j * 10 + k * 100;
+					break;
+				}
+				if (areas.find(index) == areas.end()) {
+					vector<Node*> tmp;
+					tmp.push_back(node);
+					areasKeys.insert(index);
+					areas.emplace(index, tmp);
+				}
+				else
+				{
+					areas.at(index).push_back(node);
+				}
 			}
 			nodes.push(node);
 		}
@@ -70,7 +61,7 @@ int main() {
 	}
 	nodes = BacktrackingSearch(nodes);
 	writeFile(nodes);
-	cout << "Hello" << endl;
+	cout << "Le sodoku 'input.csv' a ete resolu dans 'output.csv'." << endl;
 	system("pause");
 
 	return 0;
