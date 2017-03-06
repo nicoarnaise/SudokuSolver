@@ -4,7 +4,7 @@ using namespace std;
 
 Node* getDh(vector<Node*> nodes)
 {
-	Node* DhNode = nullptr;
+	Node* DhNode;
 	int max(-1);
 	for each (Node* node in nodes)
 	{
@@ -12,16 +12,12 @@ Node* getDh(vector<Node*> nodes)
 		set<Node*> neighbors = node->getNeighbors();
 		for each (Node* neighbor in neighbors)
 		{
-			constrainedValue += 9 - neighbor->getNbValues();
+			constrainedValue += node->getNbSameVal(neighbor->getValues());
 		}
 		if (constrainedValue > max) {
 			max = constrainedValue;
 			DhNode = node;
 		}
-	}
-	if (DhNode == nullptr)
-	{
-		bool tre = true;
 	}
 	return DhNode;
 }

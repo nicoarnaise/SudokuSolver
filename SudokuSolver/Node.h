@@ -17,6 +17,7 @@ public:
 	void setValues(std::set<std::string> input) { values = input; }
 	void setNeighbors(std::set<Node*> input) { neighbors = input; }
 	std::set<Node*> getNeighbors() { return neighbors; }
+	int getNbSameVal(std::set<std::string> input);
 
 private:
 	std::set<Node*> neighbors;

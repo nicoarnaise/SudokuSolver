@@ -12,3 +12,4 @@ std::queue<Node*> BacktrackingSearch(std::queue<Node*> csp);
 std::queue<Node*> RecursiveBacktracking(std::queue<Node*> csp);
 
 bool checkAssignment(std::queue<Node*> csp);
+bool hasNullValue(std::queue<Node*> csp);

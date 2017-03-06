@@ -39,3 +39,16 @@ std::string Node::toString()
 	string output = values.size() == 1 ? (*values.begin()) : "X";
 	return output;
 }
+
+int Node::getNbSameVal(std::set<std::string> input)
+{
+	int output = 0;
+	if (values.size() == 1)
+		return 0;
+	for each (string var in input)
+	{
+		if (values.count(var) > 0)
+			output++;
+	}
+	return output;
+}

@@ -12,13 +12,10 @@ void AC3(std::queue<Node*> csp)
 			for each (Node* neighbor in arc.first->getNeighbors())
 			{
 				pair<Node*, Node*> tmpPair = make_pair(neighbor, arc.first);
-				if (find(arcs.begin(), arcs.end(), tmpPair) == arcs.end()) {
-					arcs.push_back(tmpPair);
-				}
+				arcs.push_back(tmpPair);
 			}
 		}
 	}
-	bool done = true;
 }
 
 bool RemoveInconsistentValues(pair<Node*, Node*> arc)
@@ -27,18 +24,20 @@ bool RemoveInconsistentValues(pair<Node*, Node*> arc)
 	set<string> newValues = arc.first->getValues();
 	for each (string val in arc.first->getValues())
 	{
-		if (arc.second->getValues().count(val) != 0)
+		if (arc.second->getValues().count(val) > 0)
 		{
-			if (arc.second->getNbValues() == 1)
+			// la même valeur est possible dans 2
+			if (arc.second->getNbValues() <= 1)
 			{
-				//arc.first->getValues().erase(val);
+				// il n'y a que cette valeur de possible dans 2
 				newValues.erase(val);
 				removed = true;
 			}
 		}
 	}
-	if (removed)
+	if (removed) {
 		arc.first->setValues(newValues);
+	}
 	return removed;
 }
 
@@ -49,9 +48,11 @@ deque<pair<Node*, Node*>> GenerateQueue(queue<Node*> csp)
 	{
 		Node* node = csp.front();
 		csp.pop();
-		for each (Node* neighbor in node->getNeighbors())
-		{
-			output.push_back(make_pair(node, neighbor));
+		if (node->getNbValues() > 1) {
+			for each (Node* neighbor in node->getNeighbors())
+			{
+				output.push_back(make_pair(node, neighbor));
+			}
 		}
 	}
 	return output;
