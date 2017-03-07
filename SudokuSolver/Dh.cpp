@@ -2,6 +2,8 @@
 
 using namespace std;
 
+/* This function gives the fist var that has the maximum constraints on
+	its neighbors. */
 Node* getDh(vector<Node*> nodes)
 {
 	Node* DhNode;

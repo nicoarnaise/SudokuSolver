@@ -2,6 +2,8 @@
 
 using namespace std;
 
+/* This function gives a vector of vars that have
+	excatly the same minimum number of values possible. */
 vector<Node*> getMrv(queue<Node*> nodes) {
 	int min(11);
 	vector<Node*> MrvNodes;

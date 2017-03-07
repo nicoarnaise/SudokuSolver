@@ -2,6 +2,8 @@
 
 using namespace std;
 
+/* This function orders the values from the least constraining on neighbors
+	to the most one. */
 queue<string> getLcv(Node * node)
 {
 	queue<string> ordenedValues;

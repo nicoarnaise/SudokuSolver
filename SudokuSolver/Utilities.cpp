@@ -2,6 +2,7 @@
 
 using namespace std;
 
+/* This function splits a string in a vector<string> */
 vector<string> split(string input, char delim) {
 	int pos(0);
 	vector<string> output;
@@ -13,6 +14,7 @@ vector<string> split(string input, char delim) {
 	return output;
 }
 
+/* This function reads the input.csv and return the sudoku to solve */
 vector<vector<string>> readFile()
 {
 	vector<vector<string>> output;
@@ -29,6 +31,7 @@ vector<vector<string>> readFile()
 	return output;
 }
 
+/* This function writes the solved sudoku in the file output.csv */
 bool writeFile(queue<Node*> input) {
 	ofstream myfile("output.csv",ios::trunc);
 	if (myfile.is_open())
@@ -53,6 +56,7 @@ bool writeFile(queue<Node*> input) {
 	return true;
 }
 
+/* This function makes an hard copy of a csp */
 queue<Node*> copyCsp(queue<Node*> csp)
 {
 	queue<Node*> copied;

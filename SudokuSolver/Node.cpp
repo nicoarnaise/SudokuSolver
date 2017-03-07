@@ -4,6 +4,7 @@ using namespace std;
 
 Node::Node(string input)
 {
+	// if it has no value => give it all the possibilities
 	if (input == "") {
 		for (int i = 1; i < 10; i++)
 		{
@@ -12,10 +13,12 @@ Node::Node(string input)
 	}
 	else
 	{
+		// else fix the value
 		values.insert(input);
 	}
 }
 
+/* copy constructor */
 Node::Node(Node * node) : values(node->getValues()), neighbors(node->getNeighbors())
 {
 }
@@ -25,6 +28,7 @@ Node::~Node()
 {
 }
 
+/* Add neighbors to the node */
 void Node::AddNeighbors(vector<Node*> toAdd) {
 	for each (Node* var in toAdd)
 	{
@@ -34,13 +38,15 @@ void Node::AddNeighbors(vector<Node*> toAdd) {
 	}
 }
 
+/* Gives the vallue if there is only one or an X if not. */
 std::string Node::toString()
 {
 	string output = values.size() == 1 ? (*values.begin()) : "X";
 	return output;
 }
 
-int Node::getNbSameVal(std::set<std::string> input)
+/* Gives the number of values contained in the set that the node has. */
+int Node::getNbSameVal(set<string> input)
 {
 	int output = 0;
 	if (values.size() == 1)
